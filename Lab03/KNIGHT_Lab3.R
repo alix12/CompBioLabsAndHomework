@@ -10,7 +10,7 @@ avg_eat_chip <- .4
 bag_o_chip - ((num_guest * avg_eat_chip) + .4)
 ### we will have 1.4 bags of Hot Cheetos left
 
-### NOW WE RANK ALL THE MOVIEEEESSSS (I-IV of Starwars)
+### NOW WE RANK ALL THE MOVIEEEESSSS (I-VII of Starwars)
 Self <- c(7,6,5,1,2,3,4)
 Penny <- c(5,7,6,3,1,2,4)
 Jenny <- c(4,3,2,7,6,5,1)
