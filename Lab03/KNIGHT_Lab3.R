@@ -1,5 +1,9 @@
 #########**************** R FOR COMP BIO **************###################
 
+### LAB 3
+
+### Steps 1 & 2 involve opening RStudio and a new script.
+
 ### LAB STEP # 3: here is the number of chips we have, (5 bags of flaming hot cheetos -ew)
 bag_o_chip <- 5
 ### I have eight guests on the list
@@ -85,9 +89,12 @@ RANKING[c("II","V","VII"),]
 RANKING[c("IV","VI"), c("Penny","Jenny", "Stewie")]
 
 ### STEP 23 Switch Lenny's rankings for II and V
-Lennyold2 <- RANKING["II", "Lenny"]
-RANKING["II", "Lenny"] <- 6
-RANKING["V", "Lenny"] <- Lennyold2
+Lennyold_ep5 <- RANKING["V", "Lenny"]
+### = 6
+Lennyold_ep2 <- RANKING["II", "Lenny"]
+### = 7
+RANKING["II", "Lenny"] <- Lennyold_ep5
+RANKING["V", "Lenny"] <- Lennyold_ep2
 RANKING
 
 ### STEP 24 - trying with matrix/data frame names with Penny and III
@@ -95,14 +102,19 @@ RANKING["III", "Penny"]
 DATA_FRAME_RANK1["III", "Penny"]
 
 ### STEP 25 use the methods in step 24 to undo step 23
-Lennyold_old2 <- RANKING["II", "Lenny"]
-RANKING["II", "Lenny"] <- 7
-RANKING["V", "Lenny"] <- Lennyold_old2
+Lennynew_ep2 <- RANKING["II", "Lenny"]
+### = 6
+Lennynew_ep5 <- RANKING["V", "Lenny"]
+### = 7
+
+RANKING["II", "Lenny"] <- Lennynew_ep5
+RANKING["V", "Lenny"] <- Lennynew_ep2
 RANKING == DATA_FRAME_RANK1
 
 ### STEP 26 re-switch Lenny's ranking for II and V using the $ method and the data frame
 LENOLD2 <- DATA_FRAME_RANK1$Lenny[2]
+LENOLD5 <- DATA_FRAME_RANK1$Lenny[5]
 DATA_FRAME_RANK1$Lenny[5] <- LENOLD2
-DATA_FRAME_RANK1$Lenny[2] <- 6
+DATA_FRAME_RANK1$Lenny[2] <- LENOLD5
 DATA_FRAME_RANK1
 
