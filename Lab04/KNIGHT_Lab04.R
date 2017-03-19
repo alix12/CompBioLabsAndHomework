@@ -146,6 +146,11 @@ plot(Time, Abundance)
 ##4a. 
 setwd("~/Comp Bio/CompBioLabsAndHomework/Lab04")
 carbon <- read.csv("CO2_data_cut_paste.csv")
+str(carbon)
+## we see that carbon is a data frame with 8 variables, made up of 
+## integer values
+
+
 ##4b.
 ### For each of the quantities, except for year, calculate 
 ### the % change from year i-1 to year i across all years
@@ -154,39 +159,48 @@ carbon <- read.csv("CO2_data_cut_paste.csv")
 
 head(carbon)
 
-## assign variables to vectors
-Total_carbon <- carbon$Total
-gas <- carbon$Gas
-liquids <- carbon$Liquids
-solids <- carbon$Solids
-cement <- carbon$CementProduction
-gas_flare <- carbon$gas_flare
-per_cap <- carbon$PerCapita
 
-### for total emissions, want a forloop to look like this
-delta_total <- rep(0, length(carbon$Year))
-for( i in 2:length(carbon$Year)){
-  delta_total[i] <- (Total_carbon[i] / Total_carbon[i-1]) * 100
+### for just one variable, say total emissions, a working forloop looks like this
+delta_total <- rep(0, length(carbon))
+for( i in 2:length(carbon)){
+  delta_total[i] <- ((Total_carbon[i] - Total_carbon[i-1])/ Total_carbon[i-1]) * 100
 }
 
-### what if i do this for each column head...
-carbon_change <- rep(NA, length(carbon$Year))
+## create a retainer matrix for the outputs of carbondioxide (minus one row,
+## since first value wont be compared to anything else)
+percentchange <- matrix(nrow = (nrow(carbon)-1), ncol = ncol(carbon))
+
+## check what the matrix is made of
+str(percentchange)
+
+## keep as dataframe
+percentchange <- as.data.frame(percentchange)
+
+## Put in the headers
+colnames(percentchange) <- c("Year", "delta_Total", "delta_Gas", "delta_Liquids" , "delta_Solids", "delta_CementProduction","delta_GasFlaring", "delta_PerCapita")
+head(percentchange)
+
+## add in the years (without the first one of course)
+years <- carbon$Year
+
+percentchange$Year <- years[2:263]
+
+
+##
 for (i in 2:length(colnames(carbon))) {
-  delta_carbon <- carbon[,i]
-  for (j in 2:length(delta_carbon)) {
-    carbon_change[j] <- (delta_carbon[j] - delta_carbon[j-1]) * 100
+  change <- carbon[,2]
+  for (j in 2:length(change)) {
+    percentchange[j-1, i] <- ((change[j] - change[j-1])/ change[i-1]) * 100
   }
 }
-carbon_change
 
-
-
+percentchange
 
 
 ##4c. use write.csv() to save your new data frame
 ### to a file named "YearlyPercentChangesInCO2.csv"
 
-
-
+write.csv(percentchange, "YearlyPercentChangesInCO2.csv")
+?write.csv
 
 
