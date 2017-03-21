@@ -1,0 +1,1066 @@
+COMP BIO NOTES
+
+What Unix is:
+Kernal - resource manager, the core of the operating system. To open 'excel', you ask the kernal. (tries to stop your computer from crashing). We always have to go through the Kernal to do anything.
+Unix is an operating system: a whole huge family of operating systems actually. It includes a kernal. Mac OS X is a 'species' of unix. so is Linux. (operating system is bigger than a kernal, bc file structure, etc).
+
+Why do we care?
+the terminal provides a way to explore your files, and use a large number of very powerful, scalable tools for managing and manipulating files.
+
+Whats the terminal? Why haven't we been using it?
+It's an application, a special kind. Provides an interpreter of your commands for using the computer. The interpreter is your shell (software that you are accessing). 
+
+Look at your computer in different ways
+Higer level of controls on permissions
+Manage data
+Create stand-alone programs
+Communicate with other computers, work remotely
+Demystify how your operating system works and take charge of your computer
+
+
+General Syntax of Unix
+
+Your data is in a file within a file (Branching file system)
+Root directory: /
+Sub-directories: Documents/
+Sub-sub-directories: CompBio/
+
+Most common tools:
+A single tool does one thing well.
+Pipelines of workflows are created by connecting these single operations together in ways that work for you.
+
+
+The basic Syntax
+
+$ [command_name] [options] [inputs]
+
+inputs will be the files we are working with.
+space is the seperater
+options start with an option
+THERE IS NO UNDO
+-DELETING MEANS GONE FOREVER
+
+
+
+How to check out things within a file
+pwd
+
+cd
+
+ls
+
+wc BirdList.txt
+	Word Count, tells you how many lines
+
+how to count just the ducks
+
+grep duck BirdList.txt
+	pulls out all the list items with the word duck (doesnt include everything)
+grep  BirdList.txt
+
+Redirection: >
+[command Blah] > newfile
+
+[command Blah] > newfile | wc
+you can do it in one line!!
+ BE CAREFUL WRITING FILE NAMES, WILL OVERRITE THINGS YOU MIGHT NOT WANT TO OVERRITE
+
+Brute force way.
+grep Goose >> DUCKS.txt
+it just adds onto the bottom 
+
+grep Swans >> DUCKS.txt (catch the header frowns)
+
+also
+grep [dD]uck BirdList.txt
+lower or uppercasse duck
+
+
+to invert grep (all but ducks)
+grep -v Duck BirdList.txt >> NotADuck
+looking at files
+cat (all of them)
+less (q is to quit, cntrl f or b for forwards and backwards, spacebar, and arrows)
+
+USE MAN to look at how to use things - manuel
+man grep
+man less
+on your own!!! TRY IT ALL
+
+
+
+When deleting: dont use rm, just use the manual mouse way to delete.
+
+ls *.txt will bring up any and all files that contain .txt
+**********************************************************************************************************
+Tuesday January 24, 2017
+GIT
+can be used as a command line tool. 
+What's it doing?
+You have to initialize git, and it creates a repository in the directory that you intialize git in.
+	git creates a directory (it's kind of hidden from you. the directory has the name of .git - the . before git hides it, that's how it works).
+		If you wanna see whats hidden you use ls -a
+		every directory has . and .. as hidden directory
+
+So right now we do not have a git repository. 
+*************************
+$ git init
+
+git is the command in the shell, init is the command that goes to git
+It initializes an empty git repository in the current directory, it starts with . and is hidden from normal view.
+Just a new directory named .git, can cd into .git, it makes a bunch of different things.
+RIGHT NOW: git is not 'controlling' anything right now. it doesnt do anything until you ask it to. The hidden directory is where all the information about different versions are stored.
+
+When in directory containig the .git directory can use git status
+git status : can tell you that there are files on here that you can be tracking but currently are not.		
+$ git add "filename"
+if you want everything in the directory, use:
+git add *
+
+git status will show you what is now in git
+
+These files are now "staged"
+it says, 'im ready to make this apart of my archives'
+IT IS NOT SAVING EVERYTHING LIKE GOOGLE DOC
+Now it's ready to commit
+
+when would you add to commit?
+-When you did something great and it's definitely working now.
+-When you're about to do something risky, experimental, or spur of the moment
+It is not necessary to commit everytime you save
+
+$ git commit -m "my commit message"
+	it makes you take a message, so there are notes to what you just commited to.
+	just using that line w/o -m, git will open up a text editor, might be useful sometimes, but might be more convinient to just put it in your line of code.
+
+
+$ git log  - will show you the log of your commits with the unique hashes
+
+$ git pull (to clone from github)
+
+
+
+**********************************************************************************************************
+
+
+
+
+Thursday January 26, 2017
+
+TRY SWCARPENTRY.github
+
+$ git diff
+	shows differences (its a safe thing to use). 
+	the most recent commit of the working directory is identified as HEAD
+	HEAD~1 is the commit before the HEAD (most recent commint)
+	HEAD~2 is teh commit before HEAD~1
+	(hashes don't change, head changes)
+git diff - where I am now with all my files
+dit diff "filename" where I am now with a specific file compared to my last commit
+git diff HEAD 'filename' same as above
+git diff HEAD~N - specific file with N commits ago of changes
+
+$ git checkout "filename"
+	!! This deletes ANY changes that have not yet been committed.
+	THERE IS NO UNDO
+git checkout HEAD~N
+	use the version of a specific file from N commits ago
+	The version from the most recent commit can still be accessed.
+
+$ cat "filename" after checking out and stuff
+
+
+TO UNDO A COMMIT
+ - more dangerous than checking out
+ git revert  PLZ read about before using
+
+
+
+##############################******************************************##################################
+
+TUESDAY???
+
+WHAT IS GITHUB
+
+Web interface where you can use version control. It is a website to use git
+PUBLIC (unless you pay to be private)
+
+
+WHEN YOU FORGET -M
+VIM
+press i to begin inserting text
+type your commit message
+press esc to leave insertion mode
+type :x and then press enter to save the commit message and exit the vim
+
+
+nano
+atom
+ why would you want to learn a mouse free editor taht requires you to memorize or look up commands?
+ can run other jobs on other computers (ssh)
+ REMOTE COMPUTING!!!
+
+
+
+
+
+
+Getting git to ignore files
+
+You can put things in a seperate directory that is not initialized with git
+
+.gitignore
+	It's just a file.
+	It's plain text.
+
+touch fileIwonttrack    (or gedit "")
+open fileIwonttrack
+ls -a
+open .gitignore
+	add fileIwonttrack
+git status
+	YAY not existing!!
+
+
+Removing files that git has been tracking
+
+rm filename 		NO UNDO!!!!
+
+when using git, you can tell git you are removing a file that has been previously commited by doing
+git rm filename
+
+___ this current snapshot of your repository is gone, other versions are still there....
+
+mkdir newdir
+mv filename newdir/		# move it; note /
+or
+mv filename newname		# rename
+
+when using git, just tell git you are moving it.
+
+git mv filename newdir/		# move it; note /
+or
+git mv filename newname		# rename
+
+
+what should and shouldn't go into a git repo
+
+YES:
+	plain text code you want to version control
+	plain text code you want to version control
+	plain text data that isn't too large
+
+
+
+
+NO:
+	Truely private stuff
+	raw data you never plan to alter and don't want to push to github
+	large data files > 50MB
+
+MAYBE:
+	Files with proprietary of 'rich' formats (docx, xlsx, etc)
+
+
+
+
+
+WHAT IS PLAIN TEXT
+	no stylized text
+	carraige returns - ???
+	file extentions - .txt, .asc
+
+Looking at .docx in plain text, you cant!! you dont have an interpreter
+
+plain text is as close as we can get to a universal language between
+
+ASCII (askee)
+7bits of information
+128 characters
+now:
+UTF-8
+
+which kinds of data are almomst always plain text
+.txt
+.csv
+README
+
+Source Code:
+.R
+.md (mark down)
+.rmd
+
+************* can have different line break systems:
+mac has /n
+windows need 
+^M or \n\r
+*************
+
+Good file and directory names
+	no special characters
+	no spaces
+	descriptive
+	not crazy long
+	files include extension
+
+
+
+
+
+######################******************************************##########################################
+
+THURSDAY FEBRUARY 2, 2017
+DOS based systems (windows)
+All these represent a carriage return
+CR, \r, ^M
+
+Unix
+LF, \n, $
+
+Some use both at the same time
+CLRF, \r\n or ^M$
+
+R knows how to read all of these.
+
+$ file filename 	#Show file format
+
+$ cat -e filname   	#Show file with line endings
+
+$ head filename | cat -e  #For big files
+
+
+
+THREE DIFFERENT OPTIONS FOR .CSV
+
+file *.csv
+test.csv		shows what type of file: ASCII text, with CR line 
+test_msdos.csv 	shows what type of file: ASCII text, with CR line
+test_win.csv 	ASCII text, with CRLF line terminators
+
+HOW TO FIX???
+
+cat file.csv | tr 'ctrl-v ctrl-m' '\n' > file_unix.csv
+
+	type control v and control m, you get ^M (displays ^M)
+	best way to convert windows to unix
+
+SCRIPTING
+
+What makes a good script
+
+well annotated, edited, readable, defined variable names, directions, no typos, tells a story
+
+-Can be executed from top to bottom in linear order
+-have variable names that are easy to  understand
+-have comments (in R and in the shell, comments start with #)
+-Do not require unmentioned commands or steps; any requiremnets are noted in the comments
+
+HOW DO YOU WRITE A SCRIPT??
+
+play in the sandbox
+-test things out one line at a time (when possible) in the console/terminal
+-put the stuff that works into the script
+-revise the script the same way you revise any piece of writing
+
+
+
+
+
+
+TUESDAY 2/7/17	
+
+git remote -
+
+
+git push -u origin master
+
+cant do a 'fast foreward' because it doesnt know how you want to integrate them
+git pull
+(will say conflict) when trying to pull, it created a new version of readme
+looking at it: will show you the lines with conflicts
+
+
+Then you manually change the first one. Update it
+
+git will ay both are modified...
+git add readme
+
+
+
+
+
+clone vs pull
+	clone is first time
+	pull is when you want to update what you cloned, if it had changed
+
+
+
+
+Things to remember:
+What you see as one project becomes multiple repos if you clone it on multiple computers, or even if you clone it multiple times on one computer
+
+
+
+DO NOT NEST GIT REPOSITORIES.
+For each project you can create a repo without nesting, YES DO THAT
+
+how to fix it: (might be more elegant with the git guey)
+In top folder:
+$ rm -rf .git
+
+-r is a recursive remove (remove this folder and everything in it)
+-f is with force - will not ask for any permissions. YIKES! 
+SUPER DANGEROUS - be so sure that this is what you want
+
+rm -rf /*
+### SOOOOO BAAAAD (only talk about to mess with comp sci people) WATCH THE HORROR AND LOLOLOLS
+
+WHEN IN R
+
+X <- y ## R expects y is defined
+			must have "y" for it to be read
+
+
+
+R is a 1 indexed language
+
+Python is 0 indexed
+
+arrays are positioned/indexed by 1,2, ... n
+
+
+
+
+
+
+
+NEW TOPIC!!!
+
+FOR LOOP!!
+
+Initial conditions/inputs
+for a given number of times, 	### implies a counter variable
+
+repeat some action or sequence of actions
+Ending conditions/outputs
+
+Computers are sooooo good at this. (humans are just alternatively creative)
+
+1. a counter or index variable
+2. A specification of the range of values for the counter;
+a) the actions of the loop (part #3)
+
+for ( i in seq(1,10) ) {  	#for the sequence 1:10
+	print("hi")				#do this thing
+}
+
+THIS IS A FUNCTION: you give it an argument:
+i is the counter, the range is after 'in'
+The parenthesis and the word in are REQUIRED, so are the braces (if multiple actions, not if only one action)
+
+Good practice with the indent
+
+you can have multiple for loops (not nested)
+
+could be doing millions of computations in ten lines of code
+
+tot <- 0
+for ( k in seq(1,15) ) {
+	tot <- tot + k
+	print (tot)
+}
+
+Note that vectors for looping do not have to  be numeric
+
+for y in c("R", "S", "V", "P")) {
+	print(y)
+}
+in r the range of valuesd should be a 1-dimentional vector or list; this is also true of loops in MATLAB and BASH
+
+Combining for loops with array indexing is one of the keys to unlocking the mysteries of the 'big data' universe
+
+Suppose you had a giant array of number and you wanted to do something to every number like make it negative and add five
+you dont neet a loop!
+
+But what if you only want to do that to only every other number
+
+USE A FOR LOOP!!!
+
+
+###############################********************************####################################
+
+
+Tuesday February 14, 2017
+
+
+NESTED LOOPS
+
+$ nRows <- 54
+$ nCols
+$ myMatrix <- matrix(data = 0, nrow = nRows, ncol = nCols)
+# loop by going down rows
+
+for( i in 1:nCols ) {
+	fro ( j in 1:nRows ) {
+	myMatrix[j, i] <- some operation
+	}
+}
+
+
+
+LOOPING IN REVERSE
+
+for ( i in seq(from = n, to = 1, by = -1) ){
+	myVec[i] <- some operation
+	print(i)
+}
+
+
+LOOPING OVER NAMES AND LISTS
+
+myNames <- (myDataFrame)
+for( i in myNames ) {
+	ithVariable <- myDataFrame[i] # makes a data frame
+	cat(str(ithVariable))
+
+	ithVariableData <- myDataFrame[[i]] # makes a vector
+	cat(str(ithVariableData))
+}
+
+## str = structure command (must cat it out...)
+## must use double index bracketing
+
+
+
+$ write.csv()
+## puts an extra line when you print it.
+## when you look it, it puts it in quotes (because it named it)
+$ write.table(... row.names = true, eol = \n) ## can make rownames false. eol = end of line
+## could open source code to change default permanently (kind of dangerous), or just type in line
+
+Other problems
+when running script multiple times, can overwrite a file :( - CAN'T UNDO
+
+$ write.csv(x = data, file = 'filename.csv')
+this will overwrite filename.csv if it already exists in the current working directory
+	ok if you truely want to replace it with new version
+
+consult the help: append = false
+	will put all new things at the end of your file,
+	not super great...
+
+Programming "Smart"
+	Using conditionals!!
+	getting in the habit of writing your own error checking
+
+
+If-Else: General idea
+
+if a condition is true, do some operation(s)
+
+How do you know when you need one?
+
+Is there some operation that should only occur under SPECIFIED conditions?
+
+Do you want to write in some error-checking code?
+
+
+SYNTAX
+
+if ( condition ) {
+	operation(s)
+}
+
+## Binary states: true or false, can do numbers
+ELSE
+if ( condition ) {
+	operation(s)
+} else {
+	other operation(s)
+}
+
+
+ELSE IF
+if ( condition ) {
+	operation(s)
+} else if {
+	other operation(s)
+}
+
+
+ELSE IF ELSE
+if ( condition ) {
+	operation(s)
+} else if {
+	other operation(s)
+} else {
+	yet other operation(s)
+}
+
+
+
+
+TESTING TRUTH
+
+== are equal
+>= greater than or equal to
+> greater than
+< less than
+<= less than or equal to
+!= not equal to
+
+TRUE and FALSE are special values that R knows
+
+
+
+Conditions can be complex and use logical operators
+
+if ( a > 5 && )
+
+|| logical or
+&& logical and
+
+if (5-4 >2) {
+	print("result is big")
+} else {
+	print("result is small")
+}
+
+
+
+
+TUESDAY
+
+accessing a point in a vector
+
+$ myvec[2]
+
+Accessing a point in a matrix (6 rows, two columns) 
+$ mymatrix[3, 2]
+or
+$ mymatrix[9]
+	that is the ninth integer
+
+
+matrix vs data frame
+if all your data is the same type, no advantage of data frame
+you can run through (if you are doing a lot of indexing) data frame
+
+
+data frame is a colection of variables
+individual objects are variables (like a vector)
+variable three is of a factor (list of As or Bs)
+All others are of type numeric
+
+str(myDataFrame) tells you if factor or numeric
+
+myDataFrame[1] will return the vector
+but str(myDataFrame[1]) will show that it is still a data frame
+
+$ myDataFrame[[1]]
+	Gives data stored in the data structure 1
+
+$ myDataFrame$var1
+
+
+how to get individual data points?
+
+$ myDataFrame[4,2]
+$ myDataFrame$var2[4]
+
+For lab, vector1.csv was not actually a vector it was a data frame :o
+
+
+Data Access, Filtering, and Validation with Conditionals
+
+example, change all NA with values in a vector to 0
+n <- length(myVec)
+for ( i in 1:n ){
+	if( myvec[i] == 0) {
+	myvec[i] <- NA)
+	}
+}
+
+changeThese <- which(is.na(myVec))
+myVec[changeThese] <- 0
+
+any(is.na(myVec))
+
+Which gives you a vector of indicies
+
+Logical tests
+a logical object of the same dimensions of your test objects
+Will be true, false or NA
+
+Logical test + which
+
+
+Logical test + logical indexing
+change all the NA values to zeros (in a vector)
+
+$ logicalResults <- is.na(myVec)
+$ myVec[logicalResults] <- 0
+## Only applied to the places that have the TRUE (not including NAs)
+
+
+Logical indexing method
+
+logicalResults <- myMatrix == 0
+myMatrix[logicalResults] <-NA
+
+Which returns single numberic values (like above, in a matrix 6,2, we gave 12 counts)
+
+which gives you a vector
+ 
+logical checks gives you an object of the smae dimensions as your test object
+
+
+
+
+###################################******************************###################################
+
+TUESDAY Februaru 28th, 2017
+
+Rehashing Functions!!
+
+hypotenuse <- function(a=1, b=1) {
+	return( sqrt( a^2 + b^2 ) )
+}
+
+### Function name is hypotenuse
+### there are defined defaults (one for each variable)
+
+hypotenuse() ## call with defaults
+hypotenuse(3, 4) ## specify both arguments
+hypotenuse(4) ## Replaces just a, since a is the first argument
+hypotenuse( b = 2)
+hypotenuse( ,2) ## specifically just the second argument
+if you just type the name of the function, it will show you what the function is (the contents of the object)
+
+## Making a safer write.csv , just a wrapper containing the original write.csv
+
+mySafeWriteCSV <- function( data = Null, namebase = NULL, writeRowNames = False ) {
+	if (is.null( namebase ) ) { ## Check if a file name was actually given
+	warning("Error! No file name or directory given!/n")
+	} else if (is.null(data) ) { ##check if data were actually given
+	warning("Error! No data given!\n")
+	}
+}
+
+### what if I want to use the same functions (of my own creation) in lots of different contexts
+Best practice: make your own R package
+Slightly easier, 
+	save them in a .R file ## the . means invisible
+	set your .Rprofile to automatically source the file on startup
+Keep in mind, when doing the latter, you need to provide the files that contain the created functions so others can go through your work.	
+
+
+
+some other things to do in your .Rprofile
+library calls to libraries/packages that you are always using
+
+ex: suppose you are always using ggplot2
+in your .Rprofile you could add the line:
+library("ggplot2")
+
+
+
+
+##################################*************************************###################################
+
+Thursday March 2, 2017
+
+MORE ON FUNCTIONS
+... more observational than note heave :)
+
+Could code just about any discrete time model from biology
+	and automate
+
+
+###################################*********************************#####################################
+
+Tuesday March 7, 2017
+
+hints/advice for last lab
+adjacency matrix
+[] nxn matrix
+non-zero entries for every interaction
+rows are individuals (n) of the population
+columns
+diagonal: could have zeros by default (never interact) or 1, always interact (self)
+symetric interaction - folds at diagonal
+
+need a function that does a mapping
+hardest part: need this algorithm to figure out the matrices output
+dont use which() (gives numbered positions)
+use loops (likely a nested)
+
+AUTHORING WITH REPRODUCIBILITY IN MIND
+smart data files
+meta data
+documentation
+
+What makes data reproducible?
+1. "optimally" structured data files
+2. meta-data files: everything you need to know
+3. meta-scripting
+4. documentation
+	1. markdown
+	2. Rmarkdown
+
+Good data files
+Easy to get what you want
+Easy to tell the context in which a data point exists
+That means being able to easily associate a given data point with:
+	parameters that may apply to it
+	the analysis 
+
+
+Generate vectors of parameters
+just need to add r, m, and cc
+## five leading values of colums
+rcol <- rep(r, nReps)
+mcol <- rep(m, nReps)
+cccol <- rep(cc, nReps)
+runIDs <- 1:nReps
+
+
+pre allocate objects for holding all the data
+
+preyResultsMatrix <- matrix(data=0, nroe = nReps, ncol = (paraCols + gens))
+
+Transposing and matrix algebra
+1,5
+2,6
+3,7
+4,8
+to 
+1,2,3,4
+5,6,7,8
+
+## t = transpose
+preResultsMatrix[, (paramsCols+1):(paramsCols+genes)] <- t(preyData)
+
+
+make names!!! 
+myColNames <- c("runID", ..., paste(1:gens))
+turns the numeric vector into a 
+
+put parameters in data files
+use rows or columns as best suit your purposes
+multiple "runs" of data can all go in one file object if they are individually...
+
+
+######################################********************************##################################
+THURSDAY MARCH 9, 2017
+
+METADATA!!!
+What is good to have in a meta data file
+
+
+Include line breaks, (~80 characters)
+Every piece of writing that you do should be revisable
+
+It takes time, but OH SO worth it.
+
+META SCRIPTING
+scripts that make scripts
+
+HOW?
+script has a syntax in whatever language you are writing in.
+	they are parts that make a sript work
+#metascrpiting: make a script of parameter values:
+setwd(...atack rate study)
+
+sink("parameters.R") # open the file for writing 
+## you can name it anything you want
+## it ends with .R because I intend this to be an R script
+
+$ sink(filename) 
+# opens a file for writing
+# note that filename is a string (or a variable contianing a string)
+# !!!*** caution, if filename exists already, it will be overwritten
+# the output of any command will be put into a file instead of the console!!!
+# output stops giong to that file when you use the command sink()
+vs
+$ sink()
+## ends the file!
+## nothing in the paranthses
+## when you wand to close the file and end the sink
+
+BASIC EXAMPLE
+$ sink("parameters.R") ## open the file for writing 
+## now write each of the parameters
+$ cat(paste("gens <- ". gens, "/n", sep = " "))
+## more commands
+## close file
+$ sink()
+
+## why use "cat" instead of "print"?
+
+cat(pase("r <-" , r, sep =" "))
+r <- 0.2
+
+vs
+
+print(paste("r <-", r, sep = " "))
+[1] "r <- 0.2"
+
+## WHY use paste
+only because there are multiple things that you want in one string. otherwise uneccessary 
+
+
+## MARKDOWN
+
+HTML hypertext markup language
+electronic version of your teacher's pen
+annotating text
+
+
+MARKDOWN?
+a lightweight markup language with plain text formatting syntax designed so that it can be converted to HTML and many other formats using a tool by the same name.
+
+Can write it in ANY plain text editor.
+
+all of Sam's github files that end with .md are markdown.
+
+WHY
+easy authoring of documents for the web
+easier than HTML
+wasy to read the plain text doc
+allows tagging and referencing
+
+All the advantages of plain text with the organizational power of a word processor
+
+what can you create:
+Documentation for your work
+with links
+and images
+
+you can build an entire (simple but clean) website
+
+if it's written in plain text, why use a markdown editor?
+TO SEE WHAT YOU ARE CREATING IN REAL TIME.
+
+##########################################*******************************#################################
+
+
+TUESDAY MARCH 14, 2017
+Knowing how to get from data to results with your code
+
+Are you overwhelmed?? by errors?? 
+
+De-coded some for loops
+:D
+
+
+
+
+########################################**********************************################################
+
+
+THURSDAY MARCH 16, 2017
+
+Went over more data/meta data.
+
+If you don't want garbage out, don't put garbage in.
+	Check your data files!!
+
+Suppose we want to calculate (1) which species are most and least common in the camera trap data, and 
+(2) for any species the lengths of the tome intervals between consecutive trappings.
+
+
+What is the shape of the data?
+
+
+###########################*******************************###############################################
+
+TUESDAY MARCH 21, 2017
+
+Setting up a new repo
+(collaboration repo)
+Example codes (videos)
+
+Examples with Hyena
+Holekampetal
+
+.net? formatted for some other software...
+
+used less to explored the .net file
+
+guessing that the software that interprets this data, looks for *Vertices 36
+*Edges 521 (second member of dyad)
+What would happen if you load in R?
+Error for the *
+either gonna treat a bunch of things as factors... or ...
+Maybe just read it all in and try to parse it.
+
+GOALS of analysis
+1. Characterixe numbers of individuals
+2. Characterize range of relatedness values for each individual
+3. Turn social network
+
+
+
+STEPS of collaboration repos
+
+
+heads will be different
+always do a:
+$ git fetch
+looks for updates on the remote copy that your local copy does not have
+it does not merge any changes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
