@@ -1011,18 +1011,145 @@ $ git fetch
 looks for updates on the remote copy that your local copy does not have
 it does not merge any changes
 
+Master vs 'origen/master'
+
+
+####################################******************#####################################
+
+THURSDAY MARCH 22, 2017
+
+
+Made a shared git. It was legit.
+
+
+########################
+SPRING BREAK
+########################
+
+
+TUESDAY April 4, 2017
+
+INDEPENDENT PROJECT
+Assignment 10
+
+Due, 4/17 at 11:59 pm
+
+1. Pick a paper with data. Try the Dryad data repository.
+
+2. Read the original publication
+3. read the meta-data
+4. Write a summary in your own words of
+	a. the goals of the study
+	b. the methodology that produced the data
+	c. the type of data that are available to you
+				1. format
+				2. size
+				3. any inconsistencies
+
+5. for the meat: define and describe an analysis that you want to do with the data
+	You should have a biological question
+	The definition of the analysis you are proposing should (i) connecti to that biological question and (ii) describe the computational challenge involved.
+(i) repeat the analysis
+(ii) doing something the authors didnt do
+(iii) a combination of the two.
 
 
 
 
 
 
+some notes on markdown
+
+#This wil not render as a header on github
+
+# This will render as a header on github
+
+*this 
+*will not
+*be a bulleted list
+
+* this 
+* will
+
+
+Trailing spaces...
+
+this will
+all render as
+one line
+
+this will  
+render as  
+three lines
+
+Why? there are two spaces at the end of each line in the second set of three lines
+
+
+notes on collaborations
+
+1. Working collaboratively on a repo means
+	A checking for updates that have been pushed to the origin
+	B fetching and merging work done by a collaborator
+	C pushing merges ASAP if they are not "fast-forwarded"
+	D pushing your new work ASAP (as soon as you do a commit)
+	E committing more ofthen than you might usually do so that merges are smaller efforts.
+
+
+2. Forking means:
+	A You can do your own thing
+	B You can make what you consider to be improvements/enhancements/useful additions
+	C If you think  those are addistions are things everyone should know about, submit a pull request
+	D The owner of the original repo can choose to accept (merge) or deny, but you can regardless continue your own developement in your fork.
+
+3. Branching
+	A similar to forking except its all happening within one repo.
+	B that means one person owns it all
+	C just like with seperate forks
+		i. you can do separate commits and oushes to the separate branches
+		ii. work in one branch is independent of work in another branch UNTIL you merge one branch with another
+	D Merging branches is like one branch asking another other to pull
+	E acccepting a pull request means that there will be a meger of the changes from one branch (the one making the request) into the other branch I the branch rexeiving the request)	
+	F Each branch has it's own HEAD
+	G You can switch between branches at will (i. e. Switch between HEADs) on the command line.
 
 
 
 
+###################################*******************************#######################################
+
+THURSDAY APRIL 6, 2017
+
+RANDOM VS STOCHASTIC
 
 
+Prediction versus certainty
+
+certainty is the description of likelihood of your prediction.
+
+
+Goals for stochastic modeling
+
+Build and refine your 'big data' skills
+
+FROM THE READING
+
+Primer 3L probability theory
+Extremely useful reference - the basic rules of probability
+
+
+What is a probability distrubution:
+
+SIX SIDED DIE
+
+create the visual in your mind (or draw it) plus algorithm for using it.
+
+
+ALGORITHMS
+We will consider mathmatical and computer science theory for getting "random numbers" out of a deterministic device
+
+We will use: computer program functions for implementing the theory
+
+We will build: algorithms WE build for using random numbers produced from those functions.
 
 
 
