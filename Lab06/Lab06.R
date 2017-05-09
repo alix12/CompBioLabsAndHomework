@@ -1,4 +1,5 @@
-##KNIGHT_LAB05
+##KNIGHT_LAB06
+## (lab 5 plus extra)
 
 ## PART I
 
@@ -10,18 +11,15 @@ x <- 12
 
 if ( x > 5 ) {
   cat("X is greater than 5")
-} else {
-  cat("X is less than or equal to 5"
-  )
 }
 
 ## Question 2
 
 ## 2a. Import the file Vector1.csv
-setwd("~/CompBio/Sandbox/CompBio_on_git/Labs/Lab05")
+setwd("~/Comp Bio/Sandbox/CompBio_on_git/Labs/Lab05")
 
 Vector1 <- read.csv("Vector1.csv")
-head(Vector1)
+
 ## 2b. using a for loop, write a code that checks each value in the imported data and replaces every negative value with NA
 
 for( i in 1:length(Vector1$x) ) {
@@ -31,16 +29,14 @@ for( i in 1:length(Vector1$x) ) {
 }
 head(Vector1)
 
-
 ## R sees vector1 as a data frame, need to specify that we are looking at row i and column 1
 
 ## 2c. now create a new vector of data that has all the values from vector1 that fall inbetween the range 50 and 100
 ## 50 < x < 100 
 
 
-
 newvec <- which(Vector1 > 50 & Vector1 < 100)
-newervec <- Vector1[newvec, 1]
+newervec <- Vector1[newvec,1]
 
 ## Question 3
 ## Import the data on CO2 from last week's lab
@@ -111,12 +107,23 @@ for( t in 2:length(time) ) {
   n[t] <- n[t-1] + (r * n[t-1]) - (a * n[t-1] * p[t-1])
   p[t] <- p[t-1] + (k * a * n[t-1] * p[t-1]) - (m * p[t-1])
   if( n[t] < 0 )
-  n[t] <- 0
+    n[t] <- 0
   if( p[t] < 0 )
-  p[t] <- 0
+    p[t] <- 0
 }
 
 plot(p,n)
 
 plot(time, n)
 lines(time, p)
+
+
+
+
+
+
+#################*****************##############################*********************
+## extra
+
+
+

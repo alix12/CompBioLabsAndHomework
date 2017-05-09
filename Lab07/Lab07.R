@@ -48,15 +48,51 @@ Fib_seq <- function(s = 0, l = 10){
 ## d. make a plot with axes properly labeled.
 ## e. return the abundance data.
 
+pop_mod <- function(n, t, r, K,) {
+  for (t in vector) {
+    
+  }
+  abundance = n[t-1] + ( r * n[t-1] * (K - n[t-1])/K )
+  
+  plot()
+  return(abundance)
+}
+
+## Problem 3 - social networks
+#chat with Chelsea :D
+
+## adjacency matrix
+X <- matrix( c(0, 1, 1, 1, 0, 0, 1, 0, 0), nrow=3, ncol=3)
 
 
+Matrix2Pairwise <- function(X){
+  NotZero <- which(X != 0)      ## find all non-zeros in matrix
+  Pairwise <- matrix(data=1, nrow=length(NotZero), ncol=3) ## make a new container
+  colnames(Pairwise) <- c("Row", "Column", "Value")   ## Add column names
+  k <- 1
+  for(i in 1:ncol(X)){   
+    for(j in 1:nrow(X)){  
+      if(X[j, i] != 0){    ## if value is not zero add to pairwise matrix
+        Pairwise[k,"Column"] <- i  
+        Pairwise[k,"Row"] <- j     
+        Pairwise[k,"Value"] <- X[j, i] 
+        k <- k+1
+      }
+    }
+    
+  }
+  
+  return(Pairwise) 
+}
 
+Y <- Matrix2Pairwise(X)
+Y
 
-
-
-
-
-
-
+Pairwise2Matrix <- function(Y){
+  New_X <- matrix(data=1, nrow=max(Y[,1]) , ncol=max(Y[,2]))
+  
+  
+  return(New_X)
+}
 
 

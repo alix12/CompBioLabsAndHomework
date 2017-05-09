@@ -20,14 +20,16 @@ for( i in seq(1,10) ){
 init_piggy <- 10
 allowance <- 5
 gum <- 1.34
+num_gum <- 2
+num_weeks <- 8
 
-Weeks <- rep(0,8)
-for( i in seq(1,8) ) {
-  Weeks[i] <- init_piggy + (allowance * i) - ((2*gum) * i)
+for( i in 1:num_weeks ) {
+  init_piggy <- init_piggy + (allowance * i) - ((num_gum*gum) * i)
+  print(init_piggy)
 }
-Weeks[8]
 
-### Answer: Tim will have $28.56 in 8 weeks
+
+### Answer: Tim will have $93.52 in 8 weeks
 
 ### Question THREE
 ### Starting with a population of 2000 individuals
@@ -39,9 +41,8 @@ decline <- 0.95
 years <- 7
 
 for( i in 1:years ) {
-  Population <- (init_pop * decline)
-  print(Population)
-  init_pop <- Population
+  init_pop <- (init_pop * decline)
+  print(init_pop)
 }
 
 ### ANSWERs
@@ -201,6 +202,6 @@ percentchange
 ### to a file named "YearlyPercentChangesInCO2.csv"
 
 write.csv(percentchange, "YearlyPercentChangesInCO2.csv")
-?write.csv
+
 
 

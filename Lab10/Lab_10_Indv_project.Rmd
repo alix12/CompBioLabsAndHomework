@@ -1,0 +1,33 @@
+---
+title: "Individual Project: Methylotrophic Cultivation Techniques"
+author: "Alix Knight"
+date: "4/17/17"
+output: md_document
+subtitle: Does my project have insurmountable contamination?
+---
+
+# General information about my study (goals, methodology, format, size, etc.)
+
+\ The samples were obtained by plating five different soil types on three types media that contained differing amounts of pH. For example for the media that had a pH of 5, microbes from five different soil types (and a blank control "soil") were inoculated. This means that I had 15 different possibilities of soil-media combinations. Each of those 18 possibilities had 8 replicates, four with methanol in the media and four without. This means I had 144 plates of bacteria.
+
+
+\ My data was obtained by sequencing the 16S rRNA on an Illumina MiSeq run, using 151-bp paired end at the University of Colorado, Boulder Next Generation Sequencing Facility (on east campus).
+
+\ The data set contains a data frame of 533 observations and 190 variables.
+
+
+
+
+# Plans for finding the contamination pattern
+
+\ I will first need to group each "blank" type sample (including swab blanks, no template controls, uninoculated plates, and blank wells) with their associated OTUs. This will likely be a matrix or data frame.
+
+\ Then I will group each soil type together with their associated OTUs. This will likely be a matrix or data frame.
+
+\ I will then need to compare each soil type's associated OTUs to the blank samples' associtated OTUs. But how?
+
+\ Could create a counter: Counts the number of each specific OTU and compares it to the count of the OTU found in the "blank" type samples.  Would then do an ANOVA of sorts to find the differences in counts.
+
+
+
+ 
