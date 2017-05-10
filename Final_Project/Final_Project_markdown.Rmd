@@ -22,7 +22,7 @@ The size of the data
  - the map file is a data frame with 189 objecs of 4 variables
  - the data set table (OTU Table) is a data frame with 553 observations (different OTUs) with 189 variables (samples and blanks - aka sample IDs and factors)
 
-What I did was look at various aspects of the data, like looking at a PCoA plot, testing significance of the difference between the blank and non-blank samples using a PERMANOVA, and running an MNDS.
+What I did was look at various aspects of the data, like looking at a PCoA plot, and testing significance of the difference between the blank and non-blank samples using a PERMANOVA.
 
 ### Results and Conclusions
 
@@ -32,5 +32,5 @@ What I did was look at various aspects of the data, like looking at a PCoA plot,
 
 #### PERMANOVA Results
 
-#### MNDS
+![](https://github.com/alix12/CompBioLabsAndHomework/blob/master/Final_Project/PERMANOVA.PNG)
 
