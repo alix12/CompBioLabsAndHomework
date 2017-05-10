@@ -34,3 +34,9 @@ What I did was look at various aspects of the data, like looking at a PCoA plot,
 
 ![](https://github.com/alix12/CompBioLabsAndHomework/blob/master/Final_Project/PERMANOVA.PNG)
 
+##### Discussion and next steps
+
+So according to the visual representation on the PCoA Plot, it doesn't look like the samples are really that diferent between the non-blank samples (n) and the yes blank samples (y). When we check the statistical significance of this by using a permanova, we see the difference between them are actually statistically significant with a 0.001 value. 
+
+The next step I need to take with my data is to figure out how to find a way to "subtract" the blank sample OTUs from the actual data sample OTUs, and to continue on to find out if pH is an importand factor when cultivating methylotrophs.
+
