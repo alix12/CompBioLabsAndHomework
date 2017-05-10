@@ -1,0 +1,13 @@
+# Lab 8 Markdown Script
+
+### The Population Model Function Called pop_mod() in R
+
+This function:
+* loops through the discrete-time logistic growth model
+* inputs require:
+	initsize - the initial population size, Default: 10
+	generations - the number of generations you wish to run, Default: 10
+	r - rate of growth, Default: 0.02
+	K - the population's carrying capacity, Default: 1000
+* plots abundance by generation	
+* saves the output file into your computer, _Don't forget to update the filepath and version of your model!_
