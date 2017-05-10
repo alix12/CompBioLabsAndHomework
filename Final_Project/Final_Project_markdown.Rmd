@@ -1,11 +1,4 @@
----
-title: "_Kitty_ Data"
-output: md_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+#_Kitty_ Data
 
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxOXfwrkHzyUq7l1MeCZjl6V1mGBkHCac6Z2WhfAXOrJkGu9zNqHf1YZZm)
 
