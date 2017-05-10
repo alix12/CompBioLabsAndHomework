@@ -1,0 +1,39 @@
+---
+title: "_Kitty_ Data"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxOXfwrkHzyUq7l1MeCZjl6V1mGBkHCac6Z2WhfAXOrJkGu9zNqHf1YZZm)
+
+### Biological Question:
+ - Are my samples contaminated?
+ - more clearly: are the blank/control samples of my data different than the non-blank samples?
+
+### Context
+ My data was collected to identify ways of cultivating a specific type of bacteria called methylotrophs. Theses bacteria are able to degrade methanol in order to either grow or produce energy. They are quite ubiquitous in the soil and in decaying vegetation. These types of bacteria are understudied, and difficult to grow in the lab, which is why I am attempting to cultivate them for my project. Unfortunately the "first looks" at my data tell me that there is likely contamination between my samples and blanks.
+
+### Methods
+My data consists of 16S rRNA identified OTUs (at 97% similarity) from soils of differing pH. There were multiple factors recorded:
+
+ - pH of soil
+ - pH of media used
+ - Methanol presence in the media
+ - Whether or not the sample was a blank (does not contain soil)
+ - Sample ID
+ 
+The size of the data
+
+What I did was look at various aspects of the data, like looking at a PCoA plot, testing significance of the difference between the blank and non-blank samples using an PERMANOVA, and running an MNDS.
+
+### Results and Conclusions
+
+#### PCoA dissimilarity matrix
+
+#### PERMANOVA Results
+
+#### MNDS
+
