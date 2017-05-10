@@ -28,7 +28,7 @@ What I did was look at various aspects of the data, like looking at a PCoA plot,
 
 #### PCoA dissimilarity matrix
 
-![https://github.com/alix12/CompBioLabsAndHomework/blob/master/Final_Project/PCoA.png]
+![](https://github.com/alix12/CompBioLabsAndHomework/blob/master/Final_Project/PCoA.png)
 
 #### PERMANOVA Results
 
